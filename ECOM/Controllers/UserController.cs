@@ -1,6 +1,5 @@
 ﻿using ECOM.Models;
 using ECOM.Services;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ECOM.Controllers;

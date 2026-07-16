@@ -1,6 +1,5 @@
 using ECOM.Data;
 using ECOM.Helper;
-using ECOM.Models;
 using ECOM.Repositories;
 using ECOM.Services;
 using Microsoft.EntityFrameworkCore;
