@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ECOM")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1837879925775d5b8ffcfbe173c1f57b262f25c2")]
 [assembly: System.Reflection.AssemblyProductAttribute("ECOM")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ECOM")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

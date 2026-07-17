@@ -153,3 +153,5 @@ C:\Users\Intern\Documents\Projects\ECOM\ECOM\obj\Debug\net9.0\refint\ECOM.dll
 C:\Users\Intern\Documents\Projects\ECOM\ECOM\obj\Debug\net9.0\ECOM.pdb
 C:\Users\Intern\Documents\Projects\ECOM\ECOM\obj\Debug\net9.0\ECOM.genruntimeconfig.cache
 C:\Users\Intern\Documents\Projects\ECOM\ECOM\obj\Debug\net9.0\ref\ECOM.dll
+C:\Users\Intern\Documents\Projects\ECOM\ECOM\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Intern\Documents\Projects\ECOM\ECOM\obj\Debug\net9.0\ECOM.sourcelink.json

@@ -18,6 +18,8 @@ services:
     environment:
       ASPNETCORE_URLS: "http://+:8080"
       ConnectionStrings__DefaultConnection: "Server=db;Database=EcommerceDb;User Id=sa;Password=Password123!;TrustServerCertificate=True;"
+      JWT__Key: "super-secret-key-at-least-32-bytes-long-required"
+      JWT__ExpiresInHours: "1"
     depends_on:
       - db
 

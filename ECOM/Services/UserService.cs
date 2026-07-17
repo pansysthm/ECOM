@@ -1,28 +1,32 @@
 ﻿using ECOM.Entities;
 using ECOM.Helper;
 using ECOM.Models;
+using ECOM.Queries;
 using ECOM.Repositories;
+using Microsoft.AspNetCore.Identity.Data;
 
 namespace ECOM.Services;
 
 public class UserService : IUserService
 {
-    private readonly IUserRepository _userRepository;
+    private readonly IUserCommand _userCommand;
+    private readonly IUserQuery _userQuery;
     private readonly IEncryptPasswordHelper _encryptPasswordHelper;
     private readonly IUserValidation _userValidation;
 
-    public UserService(IUserRepository userRepository, IEncryptPasswordHelper encryptPasswordHelper, IUserValidation userValidation)
+    public UserService(IUserCommand userCommand, IEncryptPasswordHelper encryptPasswordHelper, IUserValidation userValidation, IUserQuery userQuery)
     {
-        _userRepository = userRepository;
+        _userCommand = userCommand;
         _encryptPasswordHelper = encryptPasswordHelper;
         _userValidation = userValidation;
+        _userQuery = userQuery;
     }
 
-    public async Task<bool> Create(CreateUserRequest request)
+    public async Task<bool> CreateAsync(CreateUserRequest request)
     {
         try
         {
-            var isUserExisted = await CheckExistedUser(request.Email);
+            var isUserExisted = await CheckExistedUserAsync(request.Email);
 
             if (isUserExisted) return false;
 
@@ -37,7 +41,7 @@ public class UserService : IUserService
                 CreatedAt = DateTime.UtcNow
             };
             
-            var result = await _userRepository.Create(newUser);
+            var result = await _userCommand.CreateAsync(newUser);
             return result;
         }
         catch (Exception e)
@@ -48,16 +52,23 @@ public class UserService : IUserService
         return false;
     }
 
-    private async Task<bool> CheckExistedUser(string email)
+    public async Task<bool> ValidateUserAsync(LoginRequest request)
     {
-        var existing = await _userRepository.IsExistedByEmail(email);
-        
-        if(!existing)
-        {
-            Console.WriteLine($"User with email {email} already exited", email);
-            return false;
-        }
+        var user = await _userQuery.GetByEmailAsync(request.Email);
+        return user != null;
+    }
 
-        return true;
+    public async Task<IEnumerable<UserDto>> GetAllAsync()
+    {
+        return await _userQuery.GetAllAsync();
+    }
+
+    private async Task<bool> CheckExistedUserAsync(string email)
+    {
+        var existing = await _userCommand.IsExistedByEmailAsync(email);
+
+        if (existing) return true;
+        Console.WriteLine($"User with email {email} already exited", email);
+        return false;
     }
 }
